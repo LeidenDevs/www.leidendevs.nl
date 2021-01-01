@@ -14,6 +14,8 @@
     <meta property="og:description" content="A place for  people who work or play with software to meet &amp; socialize.">
     <meta property="og:image" content="/assets/social-logoblock.svg">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.leidendevs.nl/">
@@ -41,10 +43,11 @@
         }
 
         body {
-            padding: 4vw 10vw;
+            padding: 5vw 10vw;
         }
 
         h1 {
+            font-size: 1.45rem;
             font-weight: normal;
         }
 
@@ -55,22 +58,41 @@
 
         svg {
             display: block;
-            width: 12ch;
-            margin-bottom: 3rem;
+            width: 6rem;
+            margin-bottom: 1.45rem;
             margin-left: -.25em;
         }
+
+        @media screen and (min-width: 30rem) {
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            svg {
+                margin-bottom: 3rem;
+                width: 12rem;
+            }
+        }
+
 
         a {
             color: #DF2529;
         }
 
         footer {
-            margin-top: 4.35rem;
+            margin-top: 2.175rem;
             font-size: .875rem;
         }
 
         footer a {
             color: currentColor
+        }
+
+        @media screen and (min-width: 30rem) {
+            footer {
+                margin-top: 4.35rem;
+            }
         }
 
         em {
