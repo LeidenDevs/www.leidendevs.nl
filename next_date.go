@@ -35,7 +35,7 @@ func main() {
 
 	newEventStr := fmt.Sprintf("<time datetime=\"%s\">%s</time>",
 		fmt.Sprintf("%v-%02d-%v", nextEventDate.Year(), int(nextEventDate.Month()), nextEventDate.Day()),
-		fmt.Sprintf("%s %s", humanize.Ordinal(nextEventDate.Day()), nextEventDate.Month()),
+		fmt.Sprintf("%s %s %s", humanize.Ordinal(nextEventDate.Day()), nextEventDate.Month(), nextEventDate.Year()),
 	)
 
 	// fmt.Sprintf("%s %s", humanize.Ordinal(next.Day()), next.Month())
