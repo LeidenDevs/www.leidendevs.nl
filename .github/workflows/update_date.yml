@@ -1,6 +1,6 @@
-name: Go
+name: Update date
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
   build:
