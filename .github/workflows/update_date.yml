@@ -1,0 +1,17 @@
+name: Go
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest  
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v5
+      - name: Update next date
+        run: go run next_date.go
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
