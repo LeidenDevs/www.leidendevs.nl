@@ -26,7 +26,7 @@ func main() {
 	fmt.Println("Day of the next meetup is:", getNextMeetupDate(time.Now()))
 
 	// Update index.html with the date
-	data, err := os.ReadFile("index.html")
+	data, err := os.ReadFile("../index.html")
 	if err != nil {
 		panic(err)
 	}
@@ -35,7 +35,7 @@ func main() {
 
 	newEventStr := fmt.Sprintf("<time datetime=\"%s\">%s</time>",
 		fmt.Sprintf("%v-%02d-%v", nextEventDate.Year(), int(nextEventDate.Month()), nextEventDate.Day()),
-		fmt.Sprintf("%s %s %s", humanize.Ordinal(nextEventDate.Day()), nextEventDate.Month(), nextEventDate.Year()),
+		fmt.Sprintf("%s %s %d", humanize.Ordinal(nextEventDate.Day()), nextEventDate.Month(), nextEventDate.Year()),
 	)
 
 	// fmt.Sprintf("%s %s", humanize.Ordinal(next.Day()), next.Month())
@@ -43,7 +43,7 @@ func main() {
 	str := re.ReplaceAllString(string(data), newEventStr)
 
 	fmt.Println("Writing to index.html")
-	err = os.WriteFile("index.html", []byte(str), 0644)
+	err = os.WriteFile("../index.html", []byte(str), 0644)
 	if err != nil {
 		panic(err)
 	}
