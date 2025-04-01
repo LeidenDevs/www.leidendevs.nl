@@ -11,10 +11,10 @@ import (
 func TestGetNextMeetupDate(t *testing.T) {
 	scenarios := []struct {
 		date     time.Time
-		expected string
+		expected time.Time
 	}{
-		{time.Date(2025, 2, 23, 0, 0, 0, 0, time.UTC), "20th March"},
-		{time.Date(2024, 12, 1, 0, 0, 0, 0, time.UTC), "16th January"},
+		{time.Date(2025, 2, 23, 0, 0, 0, 0, time.UTC), time.Date(2025, time.February, 20, 0, 0, 0, 0, time.UTC)},
+		{time.Date(2024, 12, 1, 0, 0, 0, 0, time.UTC), time.Date(2024, time.December, 19, 0, 0, 0, 0, time.UTC)},
 	}
 
 	for _, scenario := range scenarios {
