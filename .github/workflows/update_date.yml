@@ -3,7 +3,7 @@ name: Updates next meetup date
 on: 
   workflow_dispatch:
   schedule: 
-    - cron: "*/6 * * * *" 
+    - cron: "23 * * * FRI" 
 
 jobs:
   build:
