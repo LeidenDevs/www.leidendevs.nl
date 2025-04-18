@@ -14,14 +14,24 @@ const (
 )
 
 func getNextMeetupDate(now time.Time) time.Time {
-	nextMeetup := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, time.UTC)
+	firstOfMonth := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, time.UTC)
 
-	// Loop until you find a Thursday
-	for nextMeetup.Weekday() != time.Thursday {
-		nextMeetup = nextMeetup.AddDate(0, 0, 1)
+	// Loop until you find the first Thursday
+	firstThursday := firstOfMonth
+	for firstThursday.Weekday() != time.Thursday {
+		firstThursday = firstThursday.AddDate(0, 0, 1)
 	}
 
-	return nextMeetup.AddDate(0, 0, 14)
+	thirdThursday := firstThursday.AddDate(0, 0, 14)
+
+	// If thirdThursday is <= now, then we need to move to the next month
+	if thirdThursday.Before(now) {
+		return getNextMeetupDate(
+			firstOfMonth.AddDate(0, 1, 0),
+		)
+	}
+
+	return thirdThursday
 }
 
 func updateHtmlWithNewDate(targetFile string, newDate time.Time) error {
