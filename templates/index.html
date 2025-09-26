@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <p>
+            We are an inclusive tech community based in Leiden, bringing together developers, designers, testers, product thinkers and anyone passionate about building great software.</p>
+        </p>
+        <p>Through regular meet-ups and conversations, we share ideas, grow together and support the local tech scene.
+        
+        {% set section = get_section(path="events/_index.md") %}
+        <p>
+            The next event takes place on:<br/>
+            {% for post in section.pages | filter(attribute="extra.next", value=true) %}
+                <div class="card">
+                    📅 Thursday, <time datetime="{{ post.date }}">{{ 
+                        post.date|date(format="%d %B %Y")
+                        }}</time><br/>
+                    🕒 19:00 – 22:00<br/>
+                    📍 Upstairs <a href="https://maps.app.goo.gl/tXbKNY7jCRvfgvis8">'t Keyzertje</a><br/>Kaiserstraat 2-4, 2311 GR Leiden<br/>
+                </div>
+            {% endfor %}
+        </p>
+
+        <div class="d-flex">
+            Followed by:
+            <ul class="hl ml-1">
+                {% for post in section.pages | reverse %}
+                    {% set page_time = post.date|date(format="%s")|int %}
+                    {% set curr_time = now()|date(format="%s")|int %}
+                    {% if page_time > curr_time and not post.extra.next %}
+                    <li>
+                        <a href="{{ post.permalink }}">{{ post.date|date(format="%d %B") }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+{% endblock content %}

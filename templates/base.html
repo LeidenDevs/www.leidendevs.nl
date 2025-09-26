@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Leiden Software Meetup – Not just for developers</title>
+    <meta name="title" content="Leiden Software Meetup – Not just for developers">
+    <meta name="description" content="A place for  people who work or play with software to meet &amp; socialize.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.leidendevs.nl/">
+    <meta property="og:title" content="Leiden Software Developers">
+    <meta property="og:description" content="A place for  people who work or play with software to meet &amp; socialize.">
+    <meta property="og:image" content="/assets/social-logoblock.svg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.leidendevs.nl/">
+    <meta property="twitter:title" content="Leiden Software Developers">
+    <meta property="twitter:description" content="A place for  people who work or play with software to meet &amp; socialize.">
+    <meta property="twitter:image" content="/assets/social-logoblock.svg">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#ff0000">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script defer data-domain="leidendevs.nl" src="https://plausible.io/js/script.js"></script>
+
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+            color: #111;
+        }
+
+        html {
+            font-size: 1.125rem;
+        }
+
+        body {
+            padding: 7vw 10vw 5vw 23vw;
+        }
+
+        h1 {
+            font-size: 1.45rem;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        p {
+            line-height: 1.45;
+            max-width: 46ch;
+        }
+
+        li {
+            line-height: 1.45;
+        }
+
+        svg#Logoblock {
+            display: block;
+            width: 6rem;
+            margin-bottom: 1.45rem;
+            margin-left: -.25em;
+        }
+
+        figure {
+            position: relative;
+            width: 11rem;
+            height: 11rem;
+            margin: 0;
+            padding: 0;
+            transform: rotate(-5deg);
+        }
+
+        figure svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        figure svg#Logoblock {
+            transform: scale(.8) translateY(45%)
+        }
+
+        @media screen and (min-width: 30rem) {
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            svg#Logoblock {
+                margin-bottom: 3rem;
+                width: 12rem;
+            }
+        }
+
+
+        a {
+            color: #DF2529;
+        }
+
+        footer {
+            margin-top: 2.175rem;
+            font-size: .875rem;
+        }
+
+        footer a {
+            color: currentColor
+        }
+
+        @media screen and (min-width: 30rem) {
+            footer {
+                margin-top: 4.35rem;
+            }
+        }
+
+        em {
+            color: #FA2327;
+            font-style: normal;
+        }
+
+        .card {
+            border: .1rem solid #111;
+            padding: 1.5rem;
+            box-shadow: .5rem .5rem 0 #111;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-list {
+            border: .1rem solid #111;
+            box-shadow: .5rem .5rem 0 #111;
+            max-width: 42ch;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-list > div {
+            padding: 1.5rem;
+            border-bottom: .1rem solid #111;
+        }
+
+        .hl {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-style-none {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hl li {
+            display: inline-block;
+        }
+
+        .hl li:after {
+            content: ",";
+            display: inline-block;
+            margin-left: 0rem;
+        }
+
+        .hl li:last-child:after {
+            content: "";
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .site-header {
+            margin-bottom: 4vw;
+        }
+
+        .ml-1 {
+            margin-left: .2rem;
+        }
+
+        .mr-2 {
+            margin-right: .5rem;
+        }
+
+        .mr-3 {
+            margin-right: .8rem;
+        }
+
+        .mb-3 {
+            margin-bottom: .8rem;
+        }
+
+        .a-unstyled {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .pos-r {
+            position: relative;
+        }
+
+        figure {
+            position: absolute;
+            left: -15rem;
+            top: -4vw;
+        }
+
+        .markdown-content {}
+
+        .markdown-content h2 {
+            margin-top: 2.9rem;
+        }
+
+        .markdown-content h3 {
+            margin-top: 1.45rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="language-toggle">
+        <ul>
+            <li><a href="/">en</a></li>
+            <li><a href="/nl">nl</a></li>
+        </ul>
+    </div> -->
+
+    <div class="site-header">
+        <h1 class="pos-r">
+            <figure>
+                <a href="/">
+                    <svg viewbox="0 0 100 100" width="200">
+                        <circle cx="50%" cy="50%" r="50%" fill="red" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702 370" id="Logoblock">
+                        <defs>
+                            <linearGradient x1="50%" y1="27.547%" x2="50%" y2="86.031%" id="a">
+                                <stop stop-color="#FA2327" offset="0%" />
+                                <stop stop-color="#DF2529" offset="100%" />
+                            </linearGradient>
+                        </defs>
+                        <g fill="#fff" fill-rule="evenodd">
+                            <path
+                                d="M380.52 239.51l-30.679-29.744-29.757-34.948-14.23-13.797v-13.258l-33.266-32.255-10.352 10.033-7.763-7.524-10.348 10.034 5.917 5.734-17.746 17.203-14.047-13.62 10.721-10.395-10.351-10.033-10.718 10.395-12.197-11.827 10.717-10.395-11.452-11.107-10.721 10.391-16.266-15.767 2.957-2.868 18.481-17.918 11.46 11.107 9.982-9.675-6.656-6.45 17.004-16.488-6.653-6.45 14.416-13.978 120.868 117.197 29.754 31.71v18.457L403.9 216.84h20.608c2.352 0 8.24-8.424 10.436-10.142 6.777-5.306 13.24-4.346 21.31-3.43 13.316 1.514 23.955 9.485 33.313 18.203 26.695 24.87 21.382 53.31.735 79.32.788-.988 7.349 10.174 7.555 11.301.79 4.372-.726 9.239-3.29 12.907-5.464 7.82-15.208 8.218-24.226 8.231l-6.744-6.542c-11.747 11.39-16.922 16.034-33.659 16.037-31.782.003-53.845-10.81-66.787-40.495v-25.804l4.434-12.904 12.936-12.543V239.51zm65.036 69.75c27.483-15.113 49.34-48.926 26.594-70.203-11.619-10.87-22.464-10.176-36.766-4.208-.032 0 .252 30.598-4.734 30.598l-5.029 4.879-29.907.402c-14.831 14.377-7.986 36.849 11.629 44.275 11.318 4.286 25.378 1.311 38.213-5.744zm55.91 13.359l-5.166-10.18 5.166 10.18zm-298.33-6.814l-3.457 6.814 3.458-6.814a14.054 14.054 0 01.152-3.714c.206-1.127 6.767-12.289 7.555-11.3-20.647-26.01-25.96-54.45.735-79.32 9.358-8.72 19.997-16.69 33.312-18.205 8.07-.915 14.534-1.875 21.31 3.431 2.197 1.718 8.085 10.142 10.437 10.142h20.608l24.304-23.565v-18.457l29.754-31.71L472.172 25.91l14.416 13.978-6.653 6.45 17.004 16.487-6.656 6.45 9.983 9.676 11.459-11.107 18.48 17.918 2.958 2.868-16.266 15.767-10.72-10.391-11.453 11.107 10.717 10.395-12.197 11.827-10.718-10.395-10.351 10.033 10.72 10.395-14.046 13.62-17.746-17.203 5.917-5.734-10.348-10.034-7.763 7.524-10.352-10.033-33.266 32.255v13.258l-14.23 13.797-29.757 34.948-30.679 29.744v11.468l12.936 12.543 4.434 12.904v25.804c-12.942 29.685-35.004 40.498-66.787 40.495-16.737-.003-21.912-4.648-33.659-16.037l-6.744 6.542c-9.018-.013-18.762-.412-24.225-8.23-1.854-2.652-3.16-5.93-3.443-9.194zm293.125-3.444L490.491 301l5.77 11.36zm-240.672-3.102c12.835 7.055 26.895 10.03 38.213 5.744 19.615-7.426 26.46-29.898 11.63-44.275l-29.908-.402-5.029-4.879c-4.986 0-4.702-30.598-4.734-30.598-14.302-5.968-25.147-6.662-36.766 4.208-22.745 21.277-.889 55.09 26.594 70.202z"
+                                fill-rule="nonzero" />
+                            <path
+                                d="M645.6 184.675l-30.535-21.895c-5.816-10.321-8.724-27.794-8.724-52.417V77.85c0-15.924-1.781-26.65-5.344-32.18-3.562-5.529-9.924-9.178-19.084-10.948-1.454-.147-3.417-.442-5.89-.884-12.795-1.622-19.193-7.52-19.193-17.694 0-5.013 1.636-8.957 4.908-11.832C565.009 1.438 569.626 0 575.588 0c24.573 0 41.95 6.266 52.128 18.8 10.178 12.532 15.267 35.828 15.267 69.888v26.32c0 28.604 12.069 45.486 36.207 50.647 4.07 1.032 7.197 1.77 9.378 2.212 4.508 1.18 7.78 3.096 9.815 5.75 2.036 2.654 3.054 6.34 3.054 11.058 0 5.75-1.236 9.99-3.708 12.718-2.472 2.727-6.543 4.534-12.214 5.418-18.758 3.244-30.536 8.441-35.334 15.593-4.798 7.15-7.198 19.352-7.198 36.603v25.655c0 34.208-5.016 57.504-15.05 69.89-10.032 12.385-27.335 18.578-51.91 18.578-6.106 0-10.832-1.401-14.176-4.203-3.345-2.801-5.017-6.708-5.017-11.721 0-10.322 6.398-16.367 19.194-18.136 3.49-.443 6.18-.885 8.07-1.327 8.433-2.065 14.25-5.677 17.449-10.837 3.199-5.161 4.798-15.408 4.798-30.743V259.43c0-24.476 2.908-41.911 8.724-52.306 5.817-10.395 15.995-17.878 30.536-22.449zm-589.764 0c14.54 4.571 24.72 12.054 30.535 22.449 5.817 10.395 8.725 27.83 8.725 52.306v32.733c0 15.335 1.6 25.582 4.798 30.743 3.2 5.16 9.015 8.772 17.449 10.837 1.89.442 4.58.884 8.07 1.327 12.796 1.77 19.194 7.814 19.194 18.136 0 5.013-1.673 8.92-5.017 11.721-3.344 2.802-8.07 4.203-14.177 4.203-24.574 0-41.877-6.193-51.91-18.578-10.033-12.386-15.05-35.682-15.05-69.89v-25.655c0-17.251-2.399-29.452-7.197-36.603-4.799-7.152-16.577-12.349-35.334-15.593-5.67-.884-9.742-2.69-12.214-5.418C1.236 194.665 0 190.426 0 184.675c0-4.718 1.018-8.404 3.054-11.058 2.035-2.654 5.307-4.57 9.814-5.75 2.182-.443 5.308-1.18 9.38-2.212 24.137-5.16 36.205-22.043 36.205-50.648V88.688c0-34.06 5.09-57.356 15.268-69.889C83.899 6.266 101.275 0 125.849 0c5.962 0 10.578 1.438 13.85 4.313 3.272 2.875 4.908 6.82 4.908 11.832 0 10.174-6.398 16.072-19.194 17.694-2.472.442-4.435.737-5.889.884-9.16 1.77-15.522 5.419-19.085 10.948-3.562 5.53-5.343 16.256-5.343 32.18v32.512c0 24.623-2.908 42.096-8.725 52.417-5.816 10.321-15.994 17.62-30.535 21.895z" />
+                        </g>
+                    </svg>
+                </a>
+            </figure>
+            <a href="/" class="a-unstyled">
+                Leiden Software Meetup
+            </a>
+        </h1>
+
+        <nav>
+            <ul class="d-flex list-style-none">
+                <li class="mr-3"><a href="/events">Events</a></li>
+                <li class="mr-3"><a href="/speaking">Speaking</a></li>
+                <li class="mr-3"><a href="/sponsors">Sponsors</a></li>
+                <li class="mr-3"><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        {% block content %}{% endblock  %}
+    </main>
+    <footer>
+        <p>
+            If you have any meetup ideas or feedback you can send us a message within <a
+            href="https://links.leidendevs.nl/slack-invite">Slack</a> or <a href="mailto:organizers@leiden.dev">email</a>.</p>
+
+        <em>❤</em> <a href="//github.com/LeidenDevs/www.leidendevs.nl">Source on GitHub</a>
+    </footer>
+
+</body>
+
+</html>
