@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    <h2>{{ page.date }}</h2>
+    {% if page.extra.meetup %}
+        <p>
+            <a href="{{ page.extra.meetup }}">Meetup</a>
+        </p>
+    {% endif %}
+    <div class="markdown-content">
+        {{ page.content | safe }}
+    </div>
+{% endblock content %}

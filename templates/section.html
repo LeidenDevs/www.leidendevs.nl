@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ section.title }}</h1>
+
+    <h2>Upcoming</h2>
+    <ul>
+        {% for page in section.pages | reverse %}
+            {% set page_time = page.date|date(format="%s")|int %}
+            {% set curr_time = now()|date(format="%s")|int %}
+            {% if page_time > curr_time %}
+            <li>
+                {{ page.date|date(format="%d %B %Y") }} <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Past</h2>
+    <ul>
+    {% for post in section.pages %}
+        {% set page_time = post.date|date(format="%s")|int %}
+        {% set curr_time = now()|date(format="%s")|int %}
+        {% if page_time < curr_time and not post.extra.next %}
+        <li>
+            {{ post.date|date(format="%d %B %Y") }} <a href="{{ post.permalink }}">{{ post.title }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock content %}
