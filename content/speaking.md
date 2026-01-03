@@ -12,6 +12,3 @@ Send us a message within [Slack](https://links.leidendevs.nl/slack-invite) or [e
 
 * Your talk title
 * Your talk abstract
-* Your talk slides (if applicable)
-* Your talk recording (if applicable)
-
