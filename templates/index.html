@@ -11,11 +11,24 @@
             The next event takes place on:<br/>
             {% for post in section.pages | filter(attribute="extra.next", value=true) %}
                 <div class="card">
-                    📅 Thursday, <time datetime="{{ post.date }}">{{ 
-                        post.date|date(format="%d %B %Y")
-                        }}</time><br/>
-                    🕒 19:00 – 22:00<br/>
-                    📍 Upstairs <a href="https://maps.app.goo.gl/tXbKNY7jCRvfgvis8">'t Keyzertje</a><br/>Kaiserstraat 2-4, 2311 GR Leiden<br/>
+                    <table>
+                        <tr>
+                            <td title="Date of event">📅</td>
+                            <td>Thursday, <time datetime="{{ post.date }}">{{ post.date|date(format="%d %B %Y") }}</time></td>
+                        </tr>
+                        <tr>
+                            <td title="Time of event">🕒</td>
+                            <td>19:00 – 22:00</td>
+                        </tr>
+                        <tr>
+                            <td title="Location of event">📍</td>
+                            <td><a href="{{ post.extra.venue.uri }}">{{ post.extra.venue.name }}</a>: {{ post.extra.venue.instructions }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ post.extra.venue.address }}</td>
+                        </tr>
+                    </table>
                 </div>
             {% endfor %}
         </p>
