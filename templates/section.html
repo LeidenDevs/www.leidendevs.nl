@@ -10,7 +10,7 @@
             {% set curr_time = now()|date(format="%s")|int %}
             {% if page_time > curr_time %}
             <li>
-                {{ page.date|date(format="%d %B %Y") }} <a href="{{ page.permalink }}">{{ page.title }}</a>
+                <a href="{{ page.permalink }}">{{ page.date|date(format="%d %B %Y") }}</a>
             </li>
             {% endif %}
         {% endfor %}
@@ -23,7 +23,7 @@
         {% set curr_time = now()|date(format="%s")|int %}
         {% if page_time < curr_time and not post.extra.next %}
         <li>
-            {{ post.date|date(format="%d %B %Y") }} <a href="{{ post.permalink }}">{{ post.title }}</a>
+            <a href="{{ post.permalink }}">{{ post.date|date(format="%B %Y") }}</a>
         </li>
         {% endif %}
     {% endfor %}
