@@ -6,7 +6,7 @@
     {%- else -%}
         {{ config.title }}
     {%- endif -%}
-{% endmacro input %}
+{% endmacro title %}
 
 {% macro description() %}
     {%- if page.description -%}
@@ -16,4 +16,4 @@
     {%- else -%}
         {{ config.description }}
     {%- endif -%}
-{% endmacro input %}
+{% endmacro description %}
