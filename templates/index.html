@@ -1,51 +1,57 @@
 {% extends "base.html" %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-        <p>
-            We are an inclusive tech community based in Leiden, bringing together developers, designers, testers, product thinkers and anyone passionate about building great software.
-        </p>
-        <p>Through regular meet-ups and conversations, we share ideas, grow together and support the local tech scene.
-        
-        {% set section = get_section(path="events/_index.md") %}
-        <p>
-            The next event takes place on:<br/>
-            {% for post in section.pages | filter(attribute="extra.next", value=true) %}
-                <div class="card">
-                    <table>
-                        <tr>
-                            <td title="Date of event">📅</td>
-                            <td>Thursday, <time datetime="{{ post.date }}">{{ post.date|date(format="%d %B %Y") }}</time></td>
-                        </tr>
-                        <tr>
-                            <td title="Time of event">🕒</td>
-                            <td>19:00 – 22:00</td>
-                        </tr>
-                        <tr>
-                            <td title="Location of event">📍</td>
-                            <td><a href="{{ post.extra.venue.uri }}">{{ post.extra.venue.name }}</a>: {{ post.extra.venue.instructions }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>{{ post.extra.venue.address }}</td>
-                        </tr>
-                    </table>
+{{ section.content | safe }}
+{% set now = now() | date(format="%s") | int %}
+{% set events = get_section(path="events/_index.md") %}
+    {# Get the 3 most recent events and order them by date, ascending #}
+    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=3) | reverse %}
+        {% set event_time = event.date | date(format="%s") | int %}
+        {% if event_time < now and loop.first %}
+            <p>No new events are known. Please check back later.</p>
+        {% endif %}
+        {% if event_time < now %}
+            {% break %}
+        {% endif %}
+        {% if loop.first %}
+            <p>
+                The next event takes place on:
+            </p>
+            <div class="card">
+                <table>
+                    <tr>
+                        <td title="Date of event">📅</td>
+                        <td><time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time></td>
+                    </tr>
+                    <tr>
+                        <td title="Time of event">🕒</td>
+                        <td>{{ event.extra.start | default(value="19:00") }} – {{ event.extra.end | default(value="22:00")}}</td>
+                    </tr>
+                    <tr>
+                        <td title="Location of event">📍</td>
+                        <td><a href="{{ event.extra.venue.uri }}">{{ event.extra.venue.name }}</a>: {{ event.extra.venue.instructions }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{ event.extra.venue.address }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% else %}
+            {% if loop.index == 2 %}
+                <div class="d-flex">
+                    <ul class="hl ml-1">Followed by:
+            {% endif%}
+                        <li>
+                            <a href="{{ event.permalink }}">{{ event.date | date(format="%d %B") }}</a>
+                        </li>
+            {% if loop.last %}
+                    </ul>
                 </div>
-            {% endfor %}
-        </p>
-
-        <div class="d-flex">
-            Followed by:
-            <ul class="hl ml-1">
-                {% for post in section.pages | reverse %}
-                    {% set page_time = post.date|date(format="%s")|int %}
-                    {% set curr_time = now()|date(format="%s")|int %}
-                    {% if page_time > curr_time and not post.extra.next %}
-                    <li>
-                        <a href="{{ post.permalink }}">{{ post.date|date(format="%d %B") }}</a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-
+            {% endif %}
+        {% endif %}
+    {# When no event pages are found #}
+    {% else %}
+        <p>No new events are known. Please check back later.</p>
+    {% endfor %}
 {% endblock content %}
