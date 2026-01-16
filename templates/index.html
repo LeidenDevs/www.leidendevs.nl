@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-{{ section.content | safe }}
-{% set now = now() | date(format="%s") | int %}
-{% set events = get_section(path="events/_index.md") %}
-    {# Get the 3 most recent events and order them by date, ascending #}
-    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=3) | reverse %}
+    {{ section.content | safe }}
+    {% set now = now() | date(format="%s") | int %}
+    {% set events = get_section(path="events/_index.md") %}
+    {% set future_events = [] %}
+    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
         {% set event_time = event.date | date(format="%s") | int %}
-        {% if event_time < now and loop.first %}
-            <p>No new events are known. Please check back later.</p>
+        {% if event_time > now %}
+            {% set_global future_events = future_events | concat(with=event) %}
         {% endif %}
-        {% if event_time < now %}
-            {% break %}
-        {% endif %}
+    {% endfor %}
+    {% for event in future_events %}
         {% if loop.first %}
             <p>
                 The next event takes place on:
@@ -50,7 +49,6 @@
                 </div>
             {% endif %}
         {% endif %}
-    {# When no event pages are found #}
     {% else %}
         <p>No new events are known. Please check back later.</p>
     {% endfor %}
