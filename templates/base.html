@@ -34,19 +34,36 @@
         * {
             font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
             color: #111;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --base-font-size: 1rem;
         }
 
         html {
-            font-size: 1.125rem;
+            font-size: var(--base-font-size);
         }
 
         body {
-            padding: 7vw 10vw 5vw 23vw;
+            padding: 3vw;
+        }
+
+        @media screen and (min-width: 30rem) {
+            :root {
+                --base-font-size: 1.125rem
+            }
+
+            body {
+                padding: 7vw 10vw 5vw 23vw;
+            }
         }
 
         h1 {
             font-size: 1.45rem;
             font-weight: normal;
+            margin: 0;
         }
 
         h2 {
@@ -64,48 +81,82 @@
             max-width: 46ch;
         }
 
+        ul {
+            padding-left: 1rem;
+        }
+
         li {
             line-height: 1.45;
         }
 
-        svg#Logoblock {
-            display: block;
-            width: 6rem;
-            margin-bottom: 1.45rem;
-            margin-left: -.25em;
-        }
-
         figure {
-            position: relative;
+            position: absolute;
             width: 11rem;
             height: 11rem;
             margin: 0;
             padding: 0;
-            transform: rotate(-5deg);
-        }
-
-        figure svg {
-            position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
+            transform-origin: 0 0;
+            transform: scale(.2);
+            transform-origin: 100% 0;
         }
 
-        figure svg#Logoblock {
-            transform: scale(.8) translateY(45%)
-        }
+            figure svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            figure #Disc {
+                width: 100%;
+                height: 100%;
+            }
+
+            figure svg#Logoblock {
+                display: block;
+            }
+
+            figure svg#Logoblock {
+                transform: scale(.8) translateY(45%) translateX(-.5rem);
+                width: 12rem;
+            }
+
+            @media screen and (max-width: 30rem) {
+                figure #Logomark path {
+                    fill: cyan
+                }
+            }
+
+            @media screen and (min-width: 30rem) {
+                figure {
+                    position: absolute;
+                    left: -20vw;
+                    top: -4vw;
+                    transform: scale(.4) rotate(-1deg);
+                    transform-origin: 0 0;
+                }
+            }
+
+            @media screen and (min-width: 51rem) {
+                figure {
+                    transform: scale(.7) rotate(-5deg);
+                }
+            }
+
+            @media screen and (min-width: 73rem) {
+                figure {
+                    transform: rotate(-5deg);
+                }
+            }
+
+
 
         @media screen and (min-width: 30rem) {
-
             h1 {
                 font-size: 2rem;
             }
-
-            svg#Logoblock {
-                margin-bottom: 3rem;
-                width: 12rem;
-            }
         }
-
 
         a {
             color: #DF2529;
@@ -183,11 +234,16 @@
 
         .d-flex {
             display: flex;
+            flex-wrap: wrap;
         }
 
         .site-header {
-            margin-bottom: 4vw;
+            margin: 0 0 4vw;
         }
+
+            .site-header nav {
+                margin-top: .5rem;
+            }
 
         .ml-1 {
             margin-left: .2rem;
@@ -214,10 +270,8 @@
             position: relative;
         }
 
-        figure {
-            position: absolute;
-            left: -15rem;
-            top: -4vw;
+        p {
+            margin-bottom: 1.4rem;
         }
 
         .markdown-content {}
@@ -244,7 +298,7 @@
         <h1 class="pos-r">
             <figure>
                 <a href="/">
-                    <svg viewbox="0 0 100 100" width="200">
+                    <svg viewbox="0 0 100 100" width="200" id="Disc">
                         <circle cx="50%" cy="50%" r="50%" fill="red" />
                     </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702 370" id="Logoblock">
@@ -290,7 +344,7 @@
     <footer>
        <p>Connect with us on <a href="https://links.leidendevs.nl/slack-invite">Slack</a>, <a href="https://www.meetup.com/nl-nl/leidendevs/">Meetup</a>, and <a href="https://www.linkedin.com/company/leidendevs/">LinkedIn</a>.</p>
 
-       <p>Have a meetup idea or feedback? Reach out via <a href="https://links.leidendevs.nl/slack-invite">Slack</a> or <a href="mailto:organizers@leiden.dev">email</a>.</p>
+       <p>Have a meetup idea or feedback? Reach out via&nbsp;<a href="https://links.leidendevs.nl/slack-invite">Slack</a> or <a href="mailto:organizers@leiden.dev">email</a>.</p>
 
        <em>❤</em> <a href="//github.com/LeidenDevs/www.leidendevs.nl">Source on GitHub</a>
     </footer>
