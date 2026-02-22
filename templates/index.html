@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block language %}{{ section.lang }}{% endblock language %}
+{% block content %}
+    {{ section.content | safe }}
+    {% set now = now() | date(format="%s") | int %}
+    {% set events = get_section(path="events/_index.md") %}
+    {% set future_events = [] %}
+    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
+        {% set event_time = event.date | date(format="%s") | int %}
+        {% if event_time > now %}
+            {% set_global future_events = future_events | concat(with=event) %}
+        {% endif %}
+    {% endfor %}
+    {% for event in future_events %}
+        {% if loop.first %}
+            <p>
+                The next event will be:
+            </p>
+            <div class="card">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <h2 style="margin-bottom: .75rem;">
+                                {{event.title}}
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td title="Date of event">📅</td>
+                        <td><time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time></td>
+                    </tr>
+                    <tr>
+                        <td title="Time of event">🕒</td>
+                        <td>{{ event.extra.start | default(value="19:00") }} – {{ event.extra.end | default(value="22:00")}}</td>
+                    </tr>
+                    <tr>
+                        <td title="Location of event">📍</td>
+                        <td><a href="{{ event.extra.venue.uri }}">{{ event.extra.venue.name }}</a>: {{ event.extra.venue.instructions }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{ event.extra.venue.address }}</td>
+                    </tr>
+                </table>
+                {% if event.extra.meetup %}
+                <a href="{{ event.extra.meetup }}" target="_blank" class="d-block" style="margin: 0.725rem 0 0">
+                    <img src="/assets/meetup.png" width="25" style="transform: translateY(.3rem) translateX(-.2rem)"/>RSVP on Meetup
+                </a>
+                {% endif %}
+            </div>
+        {% else %}
+            {% if loop.index == 2 %}
+                <div class="d-flex">
+                    <ul class="hl ml-1">Followed by:
+            {% endif%}
+                        <li>
+                            <a href="{{ event.permalink }}">{{ event.date | date(format="%d %B") }}</a>
+                        </li>
+            {% if loop.last %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <p>No new events are known. Please check back later.</p>
+    {% endfor %}
+{% endblock content %}

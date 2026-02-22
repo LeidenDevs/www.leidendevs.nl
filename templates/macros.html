@@ -1,0 +1,19 @@
+{% macro title() %}
+    {%- if page.title -%}
+        {{ page.title }}
+    {%- elif section.title -%}
+        {{ section.title }}
+    {%- else -%}
+        {{ config.title }}
+    {%- endif -%}
+{% endmacro title %}
+
+{% macro description() %}
+    {%- if page.description -%}
+        {{ page.description }}
+    {%- elif section.description -%}
+        {{ section.description }}
+    {%- else -%}
+        {{ config.description }}
+    {%- endif -%}
+{% endmacro description %}
