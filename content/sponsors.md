@@ -3,7 +3,8 @@ title = "Sponsors"
 +++
 
 ## Support Leiden's thriving tech community
-LeidenDevs brings together developers, designers, testers, and product thinkers passionate about building great software. Our monthly meetup foster knowledge sharing, networking, and career growth across diverse tech roles and skill levels.
+
+Our meetup brings together developers, designers, testers, and product thinkers passionate about building great software. Our monthly meetup foster knowledge sharing, networking, and career growth across diverse tech roles and skill levels.
 
 ### Why Sponsor Us?
 

@@ -14,10 +14,17 @@
     {% for event in future_events %}
         {% if loop.first %}
             <p>
-                The next event takes place on:
+                The next event will be:
             </p>
             <div class="card">
                 <table>
+                    <tr>
+                        <td colspan="2">
+                            <h2 style="margin-bottom: .75rem;">
+                                {{event.title}}
+                            </h2>
+                        </td>
+                    </tr>
                     <tr>
                         <td title="Date of event">📅</td>
                         <td><time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time></td>
