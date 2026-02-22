@@ -42,6 +42,11 @@
                         <td>{{ event.extra.venue.address }}</td>
                     </tr>
                 </table>
+                {% if event.extra.meetup %}
+                <a href="{{ event.extra.meetup }}" target="_blank" class="d-block" style="margin: 0.725rem 0 0">
+                    <img src="/assets/meetup.png" width="25" style="transform: translateY(.3rem) translateX(-.2rem)"/>RSVP on Meetup
+                </a>
+                {% endif %}
             </div>
         {% else %}
             {% if loop.index == 2 %}
