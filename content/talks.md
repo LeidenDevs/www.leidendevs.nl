@@ -6,6 +6,11 @@ Interested in doing a talk? <a href="/speaking">Contact us!</a>
 
 The topics and speakers in past meetups:
 
+- February 2026
+    - <a href="https://www.linkedin.com/in/adrienhaxaire/">Adrien Haxaire</a>
+      - Lightning talk: Book presentation of Enshittification by Cory Doctorow
+    - <a href="https://www.linkedin.com/in/pjullrich/">Peter Ullrich</a>
+      - What is an MCP and why would you need it?
 - January 2026
     - <a href="https://www.linkedin.com/in/kradalby/">Kristoffer Dalby</a>
         - Headscale & Tailscale: The complementary open source clone
