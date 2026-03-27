@@ -9,13 +9,13 @@
         {% for talk_slug in page.extra.talks %}
 
             {% set talk = get_page(path="talks/" ~ talk_slug ~ ".md") %}
-            <h3>
+            <h2>
                 {{ talk.title }}
                 {% if talk.extra.speaker %}
                 {% set speaker = get_page(path="speakers/" ~ talk.extra.speaker ~ ".md") %}
                 — {{ speaker.title }}
                 {% endif %}
-            </h3>
+            </h2>
 
             <div class="markdown-content">
                 {{ talk.content | safe }}
