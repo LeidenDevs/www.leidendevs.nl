@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block language %}en{% endblock language %}
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    <div class="markdown-content">
+        {{ page.content | safe }}
+    </div>
+    {% if page.extra.talks %}
+        {% for talk_slug in page.extra.talks %}
+
+            {% set talk = get_page(path="talks/" ~ talk_slug ~ ".md") %}
+            <h3>
+                {{ talk.title }}
+                {% if talk.extra.speaker %}
+                {% set speaker = get_page(path="speakers/" ~ talk.extra.speaker ~ ".md") %}
+                — {{ speaker.title }}
+                {% endif %}
+            </h3>
+
+            <div class="markdown-content">
+                {{ talk.content | safe }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}

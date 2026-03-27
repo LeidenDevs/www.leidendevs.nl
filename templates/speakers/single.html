@@ -1,0 +1,6 @@
+% set all_talks = get_section(path="talks/_index.md") %}
+{% for talk in all_talks.pages %}
+  {% if talk.extra.speaker == page.slug %}
+    <a href="{{ talk.permalink }}">{{ talk.title }}</a>
+  {% endif %}
+{% endfor %}

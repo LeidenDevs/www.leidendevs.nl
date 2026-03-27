@@ -2,6 +2,8 @@
 title = "Talks"
 +++
 
+These Items need to be migrated to the new data structure
+
 Interested in doing a talk? <a href="/speaking">Contact us!</a>
 
 The topics and speakers in past meetups:
