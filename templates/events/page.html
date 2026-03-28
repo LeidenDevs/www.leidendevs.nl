@@ -18,6 +18,7 @@
             <h2>
                 {{ talk.title }}
                 {% if talk.extra.speaker %}
+                {% set speaker_slug = talk.extra.speaker | slugify %}
                 {% set speaker = get_page(path="speakers/" ~ talk.extra.speaker ~ ".md") %}
                 — {{ speaker.title }}
                 {% endif %}

@@ -12,7 +12,8 @@
         <li>
             <a href="{{ page.permalink }}">{{ page.title }}</a>
             {% if page.extra.speaker %}
-                {% set speaker = get_page(path="speakers/" ~ page.extra.speaker ~ ".md") %}
+                {% set speaker_slug = page.extra.speaker | slugify %}
+                {% set speaker = get_page(path="speakers/" ~ speaker_slug ~ ".md") %}
                 — {{ speaker.title }}
             {% endif %}
         </li>
