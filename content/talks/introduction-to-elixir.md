@@ -1,5 +1,5 @@
 +++
-title = "Introduction to Elixer"
+title = "Introduction to Elixir"
 
 [extra]
 speaker = "peter-ullrich"
