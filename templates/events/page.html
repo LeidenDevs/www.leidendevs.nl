@@ -1,32 +1,33 @@
 {% extends "base.html" %}
+{% import "macros/event.html" as macros %}
 {% block language %}en{% endblock language %}
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    {% if page.extra.meetup %}
-        <p>
-            <a href="{{ page.extra.meetup }}">Meetup</a>
-        </p>
-    {% endif %}
+    <article>
+        <header class="my-1">
+            <h1>{{ page.title }}</h1>
+            {{ macros::event_links(event=page) }}
+        </header>
 
-    <div class="markdown-content">
-        {{ page.content | safe }}
-    </div>
-    {% if page.extra.talks %}
-        {% for talk_slug in page.extra.talks %}
+        <div class="markdown-content">
+            {{ page.content | safe }}
 
-            {% set talk = get_page(path="talks/" ~ talk_slug ~ ".md") %}
-            <h2>
-                {{ talk.title }}
-                {% if talk.extra.speaker %}
-                {% set speaker_slug = talk.extra.speaker | slugify %}
-                {% set speaker = get_page(path="speakers/" ~ talk.extra.speaker ~ ".md") %}
-                — {{ speaker.title }}
-                {% endif %}
-            </h2>
+            {% if page.extra.talks %}
+                {% for talk_slug in page.extra.talks %}
 
-            <div class="markdown-content">
-                {{ talk.content | safe }}
-            </div>
-        {% endfor %}
-    {% endif %}
+                    {% set talk = get_page(path="talks/" ~ talk_slug ~ ".md") %}
+                    <h2>
+                        {{ talk.title }}
+                        {% if talk.extra.speaker %}
+                        {% set speaker_slug = talk.extra.speaker | slugify %}
+                        {% set speaker = get_page(path="speakers/" ~ talk.extra.speaker ~ ".md") %}
+                        &ndash; {{ speaker.title }}
+                        {% endif %}
+                    </h2>
+                    {{ talk.content | safe }}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        {{ macros::event_metadata(event=page) }}
+    </article>
 {% endblock content %}

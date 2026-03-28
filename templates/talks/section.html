@@ -5,18 +5,19 @@
 
     <div class="markdown-content my-1">
         {{ section.content | safe }}
+
+        <ul class="">
+            {% for page in section.pages %}
+            <li>
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+                {% if page.extra.speaker %}
+                    {% set speaker_slug = page.extra.speaker | slugify %}
+                    {% set speaker = get_page(path="speakers/" ~ speaker_slug ~ ".md") %}
+                    &ndash; {{ speaker.title }}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <ul>
-        {% for page in section.pages %}
-        <li>
-            <a href="{{ page.permalink }}">{{ page.title }}</a>
-            {% if page.extra.speaker %}
-                {% set speaker_slug = page.extra.speaker | slugify %}
-                {% set speaker = get_page(path="speakers/" ~ speaker_slug ~ ".md") %}
-                — {{ speaker.title }}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
 {% endblock content %}

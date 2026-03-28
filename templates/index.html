@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+{% import "macros/event.html" as macros %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-    {{ section.content | safe }}
+    <div class="markdown-content">
+        {{ section.content | safe }}
+    </div>
     {% set now = now() | date(format="%s") | int %}
     {% set events = get_section(path="events/_index.md") %}
     {% set future_events = [] %}
@@ -17,36 +20,12 @@
                 The next event will be:
             </p>
             <div class="card">
-                <table>
-                    <tr>
-                        <td colspan="2">
-                            <h2 style="margin-bottom: .75rem;">
-                                {{event.title}}
-                            </h2>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td title="Date of event">📅</td>
-                        <td><time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time></td>
-                    </tr>
-                    <tr>
-                        <td title="Time of event">🕒</td>
-                        <td>{{ event.extra.start | default(value="19:00") }} – {{ event.extra.end | default(value="22:00")}}</td>
-                    </tr>
-                    <tr>
-                        <td title="Location of event">📍</td>
-                        <td><a href="{{ event.extra.venue.uri }}">{{ event.extra.venue.name }}</a>: {{ event.extra.venue.instructions }}</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>{{ event.extra.venue.address }}</td>
-                    </tr>
-                </table>
-                {% if event.extra.meetup %}
-                <a href="{{ event.extra.meetup }}" target="_blank" class="d-block" style="margin: 0.725rem 0 0">
-                    <img src="/assets/meetup.png" width="25" style="transform: translateY(.3rem) translateX(-.2rem)"/>RSVP on Meetup
-                </a>
-                {% endif %}
+                <section aria-label="Event details">
+                    <h2>{{event.title}}</h2>
+
+                    {{ macros::event_metadata(event=event)}}
+                    {{ macros::event_links(event=event)}}
+                </section>
             </div>
         {% else %}
             {% if loop.index == 2 %}

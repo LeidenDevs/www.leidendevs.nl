@@ -40,6 +40,7 @@
 
         :root {
             --base-font-size: 1rem;
+            --max-width: 46ch;
         }
 
         html {
@@ -78,7 +79,14 @@
 
         p {
             line-height: 1.45;
-            max-width: 46ch;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.25rem .25rem;
+            align-items: baseline;
+            margin: .25rem 0;
         }
 
         ul {
@@ -279,7 +287,7 @@
         }
 
         .markdown-content {
-            max-width: 48ch;
+            max-width: var(--max-width);
         }
 
         .markdown-content h2 {

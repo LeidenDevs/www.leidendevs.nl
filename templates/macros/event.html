@@ -1,0 +1,31 @@
+{% macro event_metadata(event) %}
+<dl>
+    <dt aria-label="Date">📆</dt>
+    <dd>
+    <time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time>
+    </dd>
+
+    <dt aria-label="Time">⏰</dt>
+    <dd>{{ event.extra.start | default(value="19:00") }} – {{ event.extra.end | default(value="22:00") }}</dd>
+
+    {% if event.extra.venue %}
+    <dt aria-label="Location">📍</dt>
+    <dd>
+        <a href="{{ event.extra.venue.uri }}">{{ event.extra.venue.name }}</a>:
+        {{ event.extra.venue.instructions }}
+        <address>{{ event.extra.venue.address }}</address>
+    </dd>
+    {% endif %}
+</dl>
+{% endmacro %}
+
+{% macro event_links(event) %}
+    {% if event.extra.meetup %}
+    <div style="display: flex; align-items: baseline; gap: .5rem">
+        RSVP on
+        <a href="{{ event.extra.meetup }}" target="_blank">
+            <img src="/assets/meetup.png" width="25" style="transform: translateY(.3rem) translateX(-.2rem)"/>Meetup
+        </a>
+    </div>
+    {% endif %}
+{% endmacro %}
