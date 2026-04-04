@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "macros/event.html" as macros %}
+{% block language %}{{ section.lang }}{% endblock language %}
+{% block content %}
+    <div class="markdown-content">
+        {{ section.content | safe }}
+    </div>
+    {% set now = now() | date(format="%s") | int %}
+    {% set events = get_section(path="events/_index.md") %}
+    {% set future_events = [] %}
+    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
+        {% set event_time = event.date | date(format="%s") | int %}
+        {% if event_time > now %}
+            {% set_global future_events = future_events | concat(with=event) %}
+        {% endif %}
+    {% endfor %}
+    {% for event in future_events %}
+        {% if loop.first %}
+            <p>
+                The next event will be:
+            </p>
+            <div class="card">
+                <section aria-label="Event details">
+                    <h2>{{event.title}}</h2>
+
+                    {{ macros::event_metadata(event=event)}}
+                    {{ macros::event_links(event=event)}}
+                </section>
+            </div>
+        {% else %}
+            {% if loop.index == 2 %}
+                <div class="d-flex">
+                    <ul class="hl ml-1">Followed by:
+            {% endif%}
+                        <li>
+                            <a href="{{ event.permalink }}">{{ event.date | date(format="%d %B") }}</a>
+                        </li>
+            {% if loop.last %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <p>No new events are known. Please check back later.</p>
+    {% endfor %}
+{% endblock content %}

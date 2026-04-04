@@ -1,0 +1,13 @@
+title = "Leiden.dev • Software Meetups"
+description = "A place for software enthusiasts to meet & socialize."
+
+default_language = "en"
+base_url = "https://leiden.dev"
+generate_feeds=true
+compile_sass = true
+build_search_index = false
+
+#[languages.nl]
+#generate_feeds=true
+#title = "Leiden.dev • Software Meetups"
+#description = "Een plek waar software-liefhebbers elkaar kunnen ontmoeten."
