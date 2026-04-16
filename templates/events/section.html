@@ -6,9 +6,9 @@
     <h2 class="my-2">Upcoming</h2>
     <ul>
         {% for page in section.pages | reverse %}
-            {% set page_time = page.date|date(format="%s")|int %}
-            {% set curr_time = now()|date(format="%s")|int %}
-            {% if page_time > curr_time %}
+            {% set page_time = page.date | date(format="%Y%m%d") | int %}
+            {% set curr_time = now() | date(format="%Y%m%d") | int %}
+            {% if page_time >= curr_time %}
             <li>
                 <a href="{{ page.permalink }}">{{ page.date|date(format="%d %B %Y") }}</a>
             </li>
@@ -19,8 +19,8 @@
     <h2 class="my-2">Past</h2>
     <ul>
     {% for post in section.pages %}
-        {% set page_time = post.date|date(format="%s")|int %}
-        {% set curr_time = now()|date(format="%s")|int %}
+        {% set page_time = post.date | date(format="%Y%m%d") | int %}
+        {% set curr_time = now() | date(format="%Y%m%d") | int %}
         {% if page_time < curr_time and not post.extra.next %}
         <li>
             <a href="{{ post.permalink }}">{{ post.date|date(format="%B %Y") }}</a>
