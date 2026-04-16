@@ -5,12 +5,12 @@
     <div class="markdown-content">
         {{ section.content | safe }}
     </div>
-    {% set now = now() | date(format="%s") | int %}
+    {% set now = now() | date(format="%Y%m%d") | int %}
     {% set events = get_section(path="events/_index.md") %}
     {% set future_events = [] %}
     {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
-        {% set event_time = event.date | date(format="%s") | int %}
-        {% if event_time > now %}
+        {% set event_time = event.date | date(format="%Y%m%d") | int %}
+        {% if event_time >= now %}
             {% set_global future_events = future_events | concat(with=event) %}
         {% endif %}
     {% endfor %}
