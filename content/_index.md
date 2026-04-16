@@ -9,3 +9,5 @@ software.
 
 Through regular meet-ups and conversations, we share ideas, grow together and 
 support the local tech scene.
+
+Our meetups are on every third Thursday of the month.
