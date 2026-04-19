@@ -21,7 +21,11 @@
             </p>
             <div class="card">
                 <section aria-label="Event details">
-                    <h2>{{event.title}}</h2>
+                    <h2>
+                        <a href="{{ event.permalink }}">
+                            {{event.title}}
+                        </a>
+                    </h2>
 
                     {{ macros::event_metadata(event=event)}}
                     {{ macros::event_links(event=event)}}
