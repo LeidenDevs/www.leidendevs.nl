@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-    <h1>{{ section.title }}</h1>
+    <header class="my-2">
+        <h1>{{ section.title }}</h1>
+    </header>
 
-    <h2 class="my-2">Upcoming</h2>
+    <h2 class="my-1">Upcoming</h2>
+    {% set cta = ["Speakers wanted", "Propose a talk", "Nothing planned yet", "Spaces available"] %}
+    <p>We welcome speakers of all levels to submit talks. <a href="/speaking#how-to-submit-a-talk">Find out more</a></p>
     <ul>
         {% for page in section.pages | reverse %}
             {% set page_time = page.date | date(format="%Y%m%d") | int %}
@@ -11,21 +15,30 @@
             {% if page_time >= curr_time %}
             <li>
                 <a href="{{ page.permalink }}">{{ page.date|date(format="%d %B %Y") }}</a>
+                {% set num_talks = page.extra.talks | length | int %}
+                {% if num_talks <= 0 %}
+                    {% set event_random_index = loop.index % 4 %}
+                    {{ cta[event_random_index] }}
+                {% else %}
+                    {{num_talks}} talk{{ num_talks | pluralize }}
+                {% endif %}
             </li>
             {% endif %}
         {% endfor %}
     </ul>
 
-    <h2 class="my-2">Past</h2>
-    <ul>
-    {% for post in section.pages %}
-        {% set page_time = post.date | date(format="%Y%m%d") | int %}
-        {% set curr_time = now() | date(format="%Y%m%d") | int %}
-        {% if page_time < curr_time and not post.extra.next %}
-        <li>
-            <a href="{{ post.permalink }}">{{ post.date|date(format="%B %Y") }}</a>
-        </li>
-        {% endif %}
-    {% endfor %}
-    </ul>
+    <div class="my-2">
+        <h2 class="my-1">Past</h2>
+        <ul>
+        {% for post in section.pages %}
+            {% set page_time = post.date | date(format="%Y%m%d") | int %}
+            {% set curr_time = now() | date(format="%Y%m%d") | int %}
+            {% if page_time < curr_time and not post.extra.next %}
+            <li>
+                <a href="{{ post.permalink }}">{{ post.date|date(format="%B %Y") }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}
