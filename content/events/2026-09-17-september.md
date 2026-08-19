@@ -7,7 +7,7 @@ slug = "september-2026"
 start = "19:00"
 end = "22:00"
 meetup = "https://www.meetup.com/leidendevs/events/315639527/"
-talks = []
+talks = ["techwerkers-nl"]
 
 [extra.venue]
 name = "Café De Keyzer"
@@ -18,5 +18,3 @@ uri = "http://www.dekeyzer-leiden.nl/"
 
 September edition
 Join us for our monthly social drinks!
-
-Interested in [Speaking](/speaking)?
