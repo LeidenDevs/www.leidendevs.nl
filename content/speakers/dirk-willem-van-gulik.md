@@ -1,3 +1,3 @@
 +++
-title = "Dirk-Willem van Gulik"
+title = "Dirk‑Willem van Gulik"
 +++
