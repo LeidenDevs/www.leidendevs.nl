@@ -19,4 +19,4 @@ Your sponsorship directly supports our inclusive community by funding venues, re
 
 Our community values openness, inclusion, and shared growth. We're looking for partners who share these principles and want to invest in Leiden's tech future.
 
-Ready to sponsor? Contact us at [organizers@leiden.dev] to discuss partnership opportunities that align with your goals and our community needs.
+Ready to sponsor? Contact us at [organizers@leiden.dev](mailto:organizers@leiden.dev) to discuss partnership opportunities that align with your goals and our community needs.
