@@ -63,6 +63,7 @@
 
         h1 {
             font-size: 1.45rem;
+            line-height: 1.1;
             font-weight: normal;
             margin: 0;
         }
@@ -168,6 +169,11 @@
 
         a {
             color: #DF2529;
+            text-decoration-style: dotted;
+        }
+
+        a:hover {
+            text-decoration-style: solid;
         }
 
         a svg {
@@ -286,20 +292,31 @@
             margin-bottom: 1.4rem;
         }
 
-        .markdown-content {
+        article {
             max-width: var(--max-width);
         }
 
+            article header * + * {
+                margin-top: .5rem;
+            }
+
+        .markdown-content {}
+
         .markdown-content h2 {
-            margin: 2rem 0 1rem;
+            margin: 2rem 0 .75rem;
         }
 
         .markdown-content h3 {
-            margin: 1.45rem 0;
+            margin: 1.45rem 0 .75rem;
         }
 
         .markdown-content ul {
             margin-bottom: 1.45rem;
+        }
+
+        .my-1 {
+            margin-top: .725rem;
+            margin-bottom: .725rem;
         }
 
         .my-2 {
@@ -362,9 +379,11 @@
         {% block content %}{% endblock  %}
     </main>
     <footer>
-       <p>Connect with us on <a href="https://links.leidendevs.nl/slack-invite">Slack</a>, <a href="https://www.meetup.com/nl-nl/leidendevs/">Meetup</a>, and <a href="https://www.linkedin.com/company/leidendevs/">LinkedIn</a>.</p>
 
-       <p>Have a meetup idea or feedback? Reach out via&nbsp;<a href="https://links.leidendevs.nl/slack-invite">Slack</a> or <a href="mailto:organizers@leiden.dev">email</a>.</p>
+        <p>
+            Have a meetup idea or feedback?<br/>
+            Connect with us on <a href="mailto:organizers@leiden.dev">email</a>, <a href="https://links.leidendevs.nl/slack-invite">Slack</a>, <a href="https://www.meetup.com/nl-nl/leidendevs/">Meetup</a> or <a href="https://www.linkedin.com/company/leidendevs/">LinkedIn</a>.
+        </p>
 
        <em>❤</em> <a href="//github.com/LeidenDevs/www.leidendevs.nl">Source on GitHub</a>
     </footer>

@@ -1,23 +1,32 @@
 {% extends "base.html" %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-    <h1>{{ section.title }}</h1>
+    <article>
+        <h1>{{ section.title }}</h1>
 
-    <div class="markdown-content my-2">
-        {{ section.content | safe }}
+        <div class="markdown-content my-2">
 
-        <ul class="">
-            {% for page in section.pages %}
-            <li>
-                <a href="{{ page.permalink }}">{{ page.title }}</a>
-                {% if page.extra.speaker %}
-                    {% set speaker_slug = page.extra.speaker | slugify %}
-                    {% set speaker = get_page(path="speakers/" ~ speaker_slug ~ ".md") %}
-                    &ndash; {{ speaker.title }}
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+            {% set all_speakers = get_section(path="speakers/_index.md") %}
+            <p>
+                Since we started meeting up, {{ all_speakers.pages | length }} generous people have
+                shared their thoughts in {{ section.pages | length }} sessions.
+            </p>
+
+            {{ section.content | safe }}
+
+            <ul class="">
+                {% for page in section.pages | sort(attribute="title") %}
+                <li style="padding-bottom: .25rem">
+                    <a href="{{ page.permalink }}">{{ page.title }}</a>
+                    {% if page.extra.speaker %}
+                        {% set speaker_slug = page.extra.speaker | slugify %}
+                        {% set speaker = get_page(path="speakers/" ~ speaker_slug ~ ".md") %}
+                        &#8288;&#8211;&#8288;&nbsp;{{ speaker.title | replace(from=" ", to="&nbsp;") | safe }}
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </article>
 
 {% endblock content %}
