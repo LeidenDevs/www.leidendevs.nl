@@ -2,9 +2,11 @@
 {% import "macros/event.html" as macros %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-    <div class="markdown-content">
-        {{ section.content | safe }}
-    </div>
+    <article>
+        <div class="markdown-content">
+            {{ section.content | safe }}
+        </div>
+    </article>
     {% set now = now() | date(format="%Y%m%d") | int %}
     {% set events = get_section(path="events/_index.md") %}
     {% set future_events = [] %}

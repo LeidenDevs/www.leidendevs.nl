@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% block language %}en{% endblock language %}
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <div class="markdown-content">
-        {{ page.content | safe }}
-    </div>
+    <article>
+        <header class="my-2">
+            <h1>{{ page.title }}</h1>
+            {% if page.extra.speaker %}
+                {% set speaker_slug = page.extra.speaker | slugify %}
+                {% set speaker = get_page(path="speakers/" ~ page.extra.speaker ~ ".md") %}
+                <h2>
+                    <a href="{{ speaker.permalink }}">{{ speaker.title }}</a>
+                </h2>
+            {% endif %}
+        </header>
+        <div class="markdown-content">
+            {{ page.content | safe }}
+        </div>
+    </article>
 {% endblock content %}
