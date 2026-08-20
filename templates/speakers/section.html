@@ -2,9 +2,14 @@
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
     <h1>{{ section.title }}</h1>
-    <ul>
+    
+    <div class="markdown-content my-2">
+        {{ section.content | safe }}
+    </div>
+    
+    <ul class="list-style-none">
         {% for page in section.pages %}
-        <li>
+        <li class="mb-3">
             <a href="{{ page.permalink }}">{{ page.title }}</a>
         </li>
         {% endfor %}

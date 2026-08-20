@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block language %}en{% endblock language %}
+{% block content %}
+    <article>
+        <header class="my-2">
+            <h1>{{ page.title }}</h1>
+            {% if page.extra.linkedin %}
+                <p>
+                    <a href="{{ page.extra.linkedin }}" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                </p>
+            {% endif %}
+        </header>
+
+        <div class="markdown-content">
+            {{ page.content | safe }}
+        </div>
+
+        {% set all_talks = get_section(path="talks/_index.md") %}
+
+        {% for talk in all_talks.pages %}
+            {% if talk.extra.speaker == page.slug %}
+                <h2>Talks</h2>
+                <ul>
+                {% for talk in all_talks.pages %}
+                    {% if talk.extra.speaker == page.slug %}
+                        <li class="mb-3">
+                            <a href="{{ talk.permalink }}">{{ talk.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    </article>
+{% endblock content %}
