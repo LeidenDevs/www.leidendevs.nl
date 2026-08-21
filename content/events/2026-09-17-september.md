@@ -7,6 +7,9 @@ slug = "september-2026"
 start = "19:00"
 end = "22:00"
 meetup = "https://www.meetup.com/leidendevs/events/315639527/"
+luma = "https://luma.com/9zv2kqzc"
+linkedin = "https://www.linkedin.com/events/7496573249384914944/?viewAsMember=true"
+nextcloud_form = "https://nextcloud.leiden.dev/apps/forms/s/qP7sWB5DyioWsCwEkxtSNrHx"
 talks = ["techwerkers-nl"]
 
 [extra.venue]
