@@ -21,11 +21,26 @@
 
 {% macro event_links(event) %}
     {% if event.extra.meetup %}
-    <div class="mt-1">
-        RSVP on
-        <a href="{{ event.extra.meetup }}" target="_blank">
-            Meetup
-        </a>
+    <div class="mt-1 d-flex v-align-center">
+        RSVP with
+        <ul class="hl ml-2">
+            <li>
+                <a href="{{ event.extra.meetup }}" target="_blank">Meetup</a><!--
+            --></li>
+            {% if event.extra.luma %}
+            <li>
+                <a href="{{ event.extra.luma }}" target="_blank">Luma</a><!--
+            --></li>
+            {% endif %}
+            {% if event.extra.nextcloud_form %}
+            <li>
+                or
+            <a href="{{ event.extra.nextcloud_form }}" target="_blank">
+              this form
+            </a>
+            </li>
+            {% endif %}
+        </ul>
     </div>
     {% endif %}
 {% endmacro %}

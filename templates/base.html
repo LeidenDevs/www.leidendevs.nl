@@ -234,12 +234,14 @@
 
         .hl li {
             display: inline-block;
+            margin: 0;
+            padding: 0;
         }
 
         .hl li:after {
             content: ",";
             display: inline-block;
-            margin-left: 0rem;
+            margin-left: 0;
         }
 
         .hl li:last-child:after {
@@ -255,6 +257,10 @@
             flex-wrap: wrap;
         }
 
+            .v-align-center {
+                align-items: center;
+            }
+
         .site-header {
             margin: 0 0 4vw;
         }
@@ -265,6 +271,10 @@
 
         .ml-1 {
             margin-left: .2rem;
+        }
+
+        .ml-2 {
+            margin-left: .5rem;
         }
 
         .mr-2 {
