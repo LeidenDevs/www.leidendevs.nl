@@ -57,7 +57,7 @@
             }
 
             body {
-                padding: 7vw 10vw 5vw 23vw;
+                padding: 7vw 10vw 5vw 5vw;
             }
         }
 
@@ -71,11 +71,24 @@
         h2 {
             font-size: 1.2rem;
             font-weight: normal;
+            line-height: 1.1;
         }
 
         h3 {
             font-size: 1.1rem;
             font-weight: normal;
+        }
+
+        .fs-0 {
+            display: inline-block;
+            font-size: 1rem;
+            line-height: 1.25;
+        }
+
+        .em {
+            font-size: 1.2rem;
+            line-height: 1.15;
+            color: #111;
         }
 
         p {
@@ -99,9 +112,9 @@
         }
 
         figure {
-            position: absolute;
-            width: 11rem;
-            height: 11rem;
+            position: relative;
+            width: 6rem;
+            height: 6rem;
             margin: 0;
             padding: 0;
             top: 0;
@@ -127,8 +140,8 @@
             }
 
             figure svg#Logoblock {
-                transform: scale(.8) translateY(45%) translateX(-.5rem);
-                width: 12rem;
+                transform: scale(.8) translateY(55%) translateX(.5%);
+                width: 6rem;
             }
 
             @media screen and (max-width: 30rem) {
@@ -139,9 +152,9 @@
 
             @media screen and (min-width: 30rem) {
                 figure {
-                    position: absolute;
+                    /* position: absolute;
                     left: -20vw;
-                    top: -4vw;
+                    top: -4vw; */
                     transform: scale(.4) rotate(-1deg);
                     transform-origin: 0 0;
                 }
@@ -155,7 +168,7 @@
 
             @media screen and (min-width: 73rem) {
                 figure {
-                    transform: rotate(-5deg);
+                    transform: rotate(-5deg) translateX(-1vw) translateY(-2vw);
                 }
             }
 
@@ -189,12 +202,6 @@
             color: currentColor
         }
 
-        @media screen and (min-width: 30rem) {
-            footer {
-                margin-top: 4.35rem;
-            }
-        }
-
         em {
             color: #FA2327;
             font-style: normal;
@@ -202,10 +209,12 @@
 
         .card {
             border: .1rem solid #111;
-            padding: 1.5rem;
+            padding: 1.125rem;
             box-shadow: .5rem .5rem 0 #111;
             display: inline-block;
             margin-bottom: 1.5rem;
+            border-radius: .125rem;
+            margin-left: -.375rem;
         }
 
         .card-list {
@@ -266,7 +275,7 @@
         }
 
             .site-header nav {
-                margin-top: .5rem;
+                margin-top: 2vw;
             }
 
         .ml-1 {
@@ -285,6 +294,10 @@
             margin-right: .8rem;
         }
 
+        .mb-1 {
+            margin-bottom: .75rem;
+        }
+
         .mb-3 {
             margin-bottom: .8rem;
         }
@@ -299,7 +312,7 @@
         }
 
         p {
-            margin-bottom: 1.4rem;
+            margin-bottom: .725rem;
         }
 
         article {
@@ -337,10 +350,61 @@
         .mt-1 {
             margin-top: 0.75rem;
         }
+
+        .mt-2 {
+            margin-top: 1.5rem;
+        }
+
+        /* Layout */
+        body {
+            display: grid;
+            grid-template-columns: 16ch auto;
+            grid-column-gap: 1.45rem;
+        }
+
+            .site-header {
+
+            }
+
+            .site-footer {
+                grid-column-start: 2;
+            }
+
+        .visually-hidden {
+            border: 0;
+            clip-path: inset(50%);
+            height: 1px;
+            margin: 0;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        .grid-2-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: calc(1.45rem * 3);
+        }
+
+        .btn-card {
+            display: inline-block;
+            padding: .75rem;
+            text-decoration: none;
+            border: 1px dotted;
+            border-radius: .125rem;
+            box-shadow: 10px 10px 0 rgba(255,0,0,.25);
+            margin: 1rem 0;
+            transition: 80ms ease all;
+        }
+            .btn-card:hover {
+                border-style: solid;
+                box-shadow: 10px 10px 0 #DF2529;
+            }
     </style>
 </head>
 
-<body>
+<body class="{% if page.slug %}page-{{page.slug}}{% else %}page-front{% endif %}">
     <div class="site-header">
         <h1 class="pos-r">
             <figure>
@@ -365,13 +429,13 @@
                     </svg>
                 </a>
             </figure>
-            <a href="/" class="a-unstyled">
+            <a href="/" class="a-unstyled visually-hidden">
                 Leiden Software Meetup
             </a>
         </h1>
 
-        <nav>
-            <ul class="d-flex list-style-none">
+        <nav class="mt-1">
+            <ul class="list-style-none">
                 <li class="mr-3">
                     <a href="/">
                         <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15px" height="15px" viewBox="0 0 491.4 491.4"><path d="M482 220 276 15a44 44 0 0 0-61 0L10 220a33 33 0 0 0 46 47l28-28v215c0 19 16 35 35 35h75v-98c0-7 6-13 14-13h76c7 0 14 6 14 13v98h74c20 0 35-16 35-35V239l28 28a33 33 0 0 0 47 0c13-13 13-34 0-47z"/></svg>
@@ -388,7 +452,7 @@
     <main>
         {% block content %}{% endblock  %}
     </main>
-    <footer>
+    <footer class="site-footer">
 
         <p>
             Have a meetup idea or feedback?<br/>

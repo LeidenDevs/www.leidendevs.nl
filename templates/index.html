@@ -2,51 +2,61 @@
 {% import "macros/event.html" as macros %}
 {% block language %}{{ section.lang }}{% endblock language %}
 {% block content %}
-    <article>
-        <div class="markdown-content">
-            {{ section.content | safe }}
-        </div>
-    </article>
-    {% set now = now() | date(format="%Y%m%d") | int %}
-    {% set events = get_section(path="events/_index.md") %}
-    {% set future_events = [] %}
-    {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
-        {% set event_time = event.date | date(format="%Y%m%d") | int %}
-        {% if event_time >= now %}
-            {% set_global future_events = future_events | concat(with=event) %}
-        {% endif %}
-    {% endfor %}
-    {% for event in future_events %}
-        {% if loop.first %}
-            <p>
-                The next event will be:
-            </p>
-            <div class="card">
-                <section aria-label="Event details">
-                    <h2>
-                        <a href="{{ event.permalink }}">
-                            {{event.title}}
-                        </a>
-                    </h2>
-
-                    {{ macros::event_metadata(event=event)}}
-                    {{ macros::event_links(event=event)}}
-                </section>
-            </div>
-        {% else %}
-            {% if loop.index == 2 %}
-                <div class="d-flex">
-                    <ul class="hl ml-1">Followed by:
-            {% endif%}
-                        <li>
-                            <a href="{{ event.permalink }}">{{ event.date | date(format="%d %B") }}</a>
-                        </li>
-            {% if loop.last %}
-                    </ul>
+    <div class="grid-2-column">
+        <div>
+            <article>
+                <div class="markdown-content">
+                    {{ section.content | safe }}
                 </div>
-            {% endif %}
-        {% endif %}
-    {% else %}
-        <p>No new events are known. Please check back later.</p>
-    {% endfor %}
+            </article>
+            {% set now = now() | date(format="%Y%m%d") | int %}
+            {% set events = get_section(path="events/_index.md") %}
+            {% set future_events = [] %}
+            {% for event in events.pages | sort(attribute="date") | reverse | slice(end=12) | reverse %}
+                {% set event_time = event.date | date(format="%Y%m%d") | int %}
+                {% if event_time >= now %}
+                    {% set_global future_events = future_events | concat(with=event) %}
+                {% endif %}
+            {% endfor %}
+            {% for event in future_events %}
+                {% if loop.first %}
+                    <div class="card">
+                        <em style="text-transform: uppercase; letter-spacing: 1px; font-size: 12px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Next</em>
+                        <section aria-label="Event details">
+                            <h2 class="mb-1">
+                                <a href="{{ event.permalink }}">
+                                    {{event.title}}
+                                </a>
+                            </h2>
+
+                            {{ macros::event_metadata(event=event)}}
+                            {{ macros::event_links(event=event)}}
+                        </section>
+                    </div>
+                {% else %}
+                    {% if loop.index == 2 %}
+                        <div class="d-flex">
+                            <ul class="hl">Followed by:
+                    {% endif%}
+                                <li>
+                                    <a href="{{ event.permalink }}">{{ event.date | date(format="%d %b") }}</a>
+                                </li>
+                    {% if loop.last %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                <p>No new events are known. Please check back later.</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            <p>Interested in giving a session?<br/>
+
+            Send across a title and brief outline of your talk. We can work together from there.</p>
+
+            <a href="/speaking#how-to-submit-a-talk" class="btn-card">Write us a message 📮</a>
+        </div>
+    </div>
 {% endblock content %}

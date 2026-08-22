@@ -2,7 +2,7 @@
 <dl>
     <dt aria-label="Date">📆</dt>
     <dd>
-    <time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %B %Y") }}</time>
+    <time datetime="{{ event.date }}">{{ event.date | date(format="%A, %d %b") }}</time>
     </dd>
 
     <dt aria-label="Time">⏰</dt>
@@ -36,8 +36,7 @@
             <li>
                 or
             <a href="{{ event.extra.nextcloud_form }}" target="_blank">
-              this form
-            </a>
+              this form</a>.
             </li>
             {% endif %}
         </ul>
