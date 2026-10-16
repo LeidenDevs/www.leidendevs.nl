@@ -12,3 +12,7 @@ Send us a message within [Slack](https://links.leidendevs.nl/slack-invite) or [e
 
 * Your talk title
 * Your talk abstract, a few sentences that help contextualise the work. We'll use it to advertise the event.
+
+## Practical information
+
+Once your talk is scheduled, have a look at the [practical information for speakers](@/speaking/practical-information.md): schedule, tech setup and location.
