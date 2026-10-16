@@ -11,4 +11,4 @@ We are open to speakers from all backgrounds and levels of experience. You can e
 Send us a message within [Slack](https://links.leidendevs.nl/slack-invite) or [email](mailto:organizers@leiden.dev) to get started. Be sure to include the following information:
 
 * Your talk title
-* Your talk abstract, a few sentences that help contextualise the work. We'll use it to adverties the event.
+* Your talk abstract, a few sentences that help contextualise the work. We'll use it to advertise the event.
