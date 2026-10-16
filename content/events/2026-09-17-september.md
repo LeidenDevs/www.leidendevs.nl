@@ -6,7 +6,7 @@ slug = "september-2026"
 [extra]
 start = "19:00"
 end = "22:00"
-meetup = "https://www.meetup.com/leidendevs/events/315639527/"
+meetup = "https://www.meetup.com/leidendevs/events/316211296/"
 talks = ["techwerkers-nl"]
 
 [extra.venue]
