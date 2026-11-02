@@ -24,6 +24,16 @@ jobs:
       - name: Build
         run: zola build
 
+      - name: Check for Zola placeholder pages
+        run: |
+          if files=$(grep -rlF -e "Welcome to Zola!" -e "couldn't find a template to render" public --include='*.html'); then
+            for f in $files; do
+              echo "::error file=$f::Zola placeholder page rendered (missing template?)"
+            done
+            exit 1
+          fi
+          echo "No placeholder pages found."
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
