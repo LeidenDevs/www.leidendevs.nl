@@ -18,3 +18,8 @@ header = [
     { url = "/sponsors", name = "Sponsors" },
     { url = "/about", name = "About" },
 ]
+
+[link_checker]
+skip_prefixes = [
+    "https://links.leidendevs.nl/slack-invite",
+]
